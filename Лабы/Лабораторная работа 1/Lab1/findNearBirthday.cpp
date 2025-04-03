@@ -1,44 +1,40 @@
 #include "stdafx.h"
-
-int findNearBirthday(int birthday[4], int mainDate[4]) {
-    int birthNomer = findNomerOfDay(birthday);
-    int dateNomer = findNomerOfDay(mainDate);
+#include "findNearBirthday.h"
+int findNearBirthday(int birthDay, int birthMonth, int birthYear, bool birthVisokos, int mainDay, int mainMonth, int mainYear, bool mainVisokos) {
+    int birthNomer = findNomerOfDay(birthDay, birthMonth, birthYear, birthVisokos);
+    int dateNomer = findNomerOfDay(mainDay, mainMonth, mainYear, mainVisokos);
     int res = 0;
 
-    if (mainDate[2] >= birthday[2]) {
-
-        if (birthday[0] == 29 && birthday[1] == 1) {
-
-            if (mainDate[3] && dateNomer < birthNomer) {
+    if (mainYear >= birthYear) {
+        if (birthDay == 29 && birthMonth == 1) {
+            if (mainVisokos && dateNomer < birthNomer) {
                 return birthNomer - dateNomer;
             }
             else {
-                res += 365 + mainDate[3] - dateNomer + birthNomer;
-                mainDate[2]++;
-                while (!isVisokos(mainDate[2])) {
-                    mainDate[2]++;
+                res += 365 + int(mainVisokos) - dateNomer + birthNomer;
+                mainYear++;
+                while (!isVisokos(mainYear)) {
+                    mainYear++;
                     res += 365;
                 }
                 return res;
             }
-
         }
         else {
             if (dateNomer < birthNomer) {
                 return birthNomer - dateNomer;
             }
             else {
-                return 365 + mainDate[3] - dateNomer + birthNomer;
+                return 365 + int(mainVisokos) - dateNomer + birthNomer;
             }
         }
     }
-    // др через несколько лет
-    if (mainDate[2] < birthday[2]) {
-        res = 365 + mainDate[3] - findNomerOfDay(mainDate);
-        res += findNomerOfDay(birthday);
-        for (int i = mainDate[2] + 1; i < birthday[2]; i++) {
+    if (mainYear < birthYear) {
+        res = 365 + int(mainVisokos) - findNomerOfDay(mainDay, mainMonth, mainYear, mainVisokos);
+        res += findNomerOfDay(birthDay, birthMonth, birthYear, birthVisokos);
+        for (int i = mainYear + 1; i < birthYear; i++) {
             res += 365;
-            res += isVisokos(i);
+            res += int(isVisokos(i));
         }
         return res;
     }

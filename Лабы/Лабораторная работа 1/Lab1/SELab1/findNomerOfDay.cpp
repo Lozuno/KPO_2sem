@@ -1,5 +1,5 @@
 #include "stdafx.h"
-static int months[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+#include "findNomerOfDay.h"
 int findNomerOfDay(int date[4]) {
     int ans = date[0]; // day
     for (int i = 0; i < date[1]; i++) { // мес€ц

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "findNearBirthday.h"
 int findNearBirthday(int birthday[4], int mainDate[4]) {
     int birthNomer = findNomerOfDay(birthday);
     int dateNomer = findNomerOfDay(mainDate);
@@ -32,7 +32,6 @@ int findNearBirthday(int birthday[4], int mainDate[4]) {
             }
         }
     }
-    // др через несколько лет
     if (mainDate[2] < birthday[2]) {
         res = 365 + mainDate[3] - findNomerOfDay(mainDate);
         res += findNomerOfDay(birthday);

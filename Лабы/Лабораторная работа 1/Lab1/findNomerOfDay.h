@@ -1,2 +1,2 @@
 #pragma once
-int findNomerOfDay(int date[4]);
+int findNomerOfDay(int day, int month, int year, bool visokos);

@@ -1,6 +1,6 @@
 #include "stdafx.h"
+#include "validateDate.h"
 
-static int months[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
 bool validateDate(char dateStr[], int date[4]) {
     if (strlen(dateStr) != 8) {
         return false;
@@ -22,12 +22,12 @@ bool validateDate(char dateStr[], int date[4]) {
     date[0] = atoi(dayStr);     // день
     date[1] = atoi(monthStr);   // мес€ц
     date[2] = atoi(yearStr);    // год
-    date[3] = isVisokos(date[2]); // високосный год
+    date[3] = isVisokos(date[2]); 
 
     if (date[1] > 12 || date[1] < 1) {
         return false;
     }
-    date[1]--; // ”меньшаем мес€ц дл€ соответстви€ индексам массива months
+    date[1]--; 
     if (months[date[1]] < date[0]) {
         if (date[0] - months[date[1]] == 1 && date[3] && date[1] == 1) {
             return true;

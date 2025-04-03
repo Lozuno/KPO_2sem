@@ -5,13 +5,13 @@ int main() {
     setlocale(LC_ALL, "rus");
     bool flag = true;
     while (flag) {
-       
         char date[9];
         cout << "Введите дату в формате ДДММГГГГ:";
         cin >> date;
 
-        int mainDate[4]; // [0]-день, [1]-месяц, [2]-год, [3]-високосный
-        if (!validateDate(date, mainDate)) {
+        int day, month, year;
+        bool visokos;
+        if (!validateDate(date, day, month, year, visokos)) {
             cout << "Некорректная дата\n";
             continue;
         }
@@ -27,39 +27,32 @@ int main() {
 
         switch (var) {
         case 1: {
-            if (mainDate[3]) {
-                cout << "Год " << mainDate[2] << " високосный";
-            }
-            else {
-                cout << "Год " << mainDate[2] << " невисокосный";
-            }
+            cout << "Год " << year << (visokos ? " високосный" : " невисокосный");
             break;
         }
         case 2: {
-            int nomer = findNomerOfDay(mainDate);
-            cout << "Порядковый номер дня:" << nomer;
+            cout << "Порядковый номер дня:" << findNomerOfDay(day, month, year, visokos);
             break;
         }
         case 3: {
             cout << "Введите дату рождения в формате ДДММГГГГ:";
             char birthdayStr[9];
             cin >> birthdayStr;
-            int birthday[4];
-            if (!validateDate(birthdayStr, birthday)) {
+            int birthDay, birthMonth, birthYear;
+            bool birthVisokos;
+            if (!validateDate(birthdayStr, birthDay, birthMonth, birthYear, birthVisokos)) {
                 cout << "Некорректная дата";
                 return 0;
             }
-            cout << "Количество дней до ближайщего дня рождения: " << findNearBirthday(birthday, mainDate);
+            cout << "Количество дней до ближайшего дня рождения: " << findNearBirthday(birthDay, birthMonth, birthYear, birthVisokos, day, month, year, visokos);
             break;
         }
-        case 0: {
+        case 0:
             flag = false;
             break;
-        }
-        default: {
+        default:
             cout << "Неверный вариант использования\n";
             break;
-        }
         }
         cout << '\n';
     }

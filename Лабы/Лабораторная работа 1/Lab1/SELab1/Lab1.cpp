@@ -49,7 +49,7 @@ int main() {
                 cout << "Некорректная дата";
                 return 0;
             }
-            cout << "Количество дней дaо ближайщего дня рождения: " << findNearBirthday(birthday, mainDate);
+            cout << "Количество дней до ближайщего дня рождения: " << findNearBirthday(birthday, mainDate);
             break;
         }
         case 0: {
@@ -61,6 +61,7 @@ int main() {
             break;
         }
         }
+        cout << '\n';
     }
     return 0;
 }

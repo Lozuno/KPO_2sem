@@ -1,10 +1,10 @@
 #include "stdafx.h"
-
-int findNomerOfDay(int date[4]) {
-    int ans = date[0]; // day
-    for (int i = 0; i < date[1]; i++) { // мес€ц
+#include "findNomerOfDay.h"
+int findNomerOfDay(int day, int month, int year, bool visokos) {
+    int ans = day;
+    for (int i = 0; i < month; i++) {
         ans += months[i];
-        if (i == 1 && date[3]) { // visokos
+        if (i == 1 && visokos) {
             ans += 1;
         }
     }
