@@ -36,6 +36,9 @@
     <ClCompile Include="findNameOfMonth.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="findHoliday.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -54,6 +57,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="findNameOfMonth.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="findHoliday.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

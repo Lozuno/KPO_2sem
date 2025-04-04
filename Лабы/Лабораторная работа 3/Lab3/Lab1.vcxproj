@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="findHoliday.cpp" />
     <ClCompile Include="findNameOfMonth.cpp" />
     <ClCompile Include="findNearBirthday.cpp" />
     <ClCompile Include="findNomerOfDay.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="validateDate.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="findHoliday.h" />
     <ClInclude Include="findNameOfMonth.h" />
     <ClInclude Include="findNearBirthday.h" />
     <ClInclude Include="findNomerOfDay.h" />
