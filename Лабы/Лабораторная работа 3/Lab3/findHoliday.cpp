@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "findHoliday.h"
 void findHoliday(int nomerDay, bool visokos) {
-	if (visokos && nomerDay > 61) {
+	if (visokos && nomerDay > 61 && nomerDay != 256) {
 		nomerDay--;
 	}
 	switch (nomerDay) {
