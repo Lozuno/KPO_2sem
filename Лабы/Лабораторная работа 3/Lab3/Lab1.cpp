@@ -8,7 +8,7 @@ int main() {
         char date[9];
         cout << "Введите дату в формате ДДММГГГГ(или 0 для выхода):";
         cin >> date;
-        if (strcmp(date, "0")==0) {
+        if (strcmp(date, "0") == 0) {
             break;
         }
         int day, month, year;
