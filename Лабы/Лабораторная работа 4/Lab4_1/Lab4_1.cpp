@@ -16,11 +16,6 @@ struct MobileOperator {
     int call_minutes;
 };
 
-ostream& operator<<(ostream& os, const MobileOperator& op) {
-    
-    return os;
-}
-
 int operator-(MobileOperator& a, int minutes) {
     if (a.call_minutes >= minutes) {
         a.call_minutes -= minutes;
@@ -39,10 +34,10 @@ bool operator==(MobileOperator a, MobileOperator b) {
         a.call_minutes == b.call_minutes);
 }
 void getOper(MobileOperator &op1) {
-    cout << "Введите данные первого оператора:\n";
+    
     cout << "Код страны: ";
     cin >> op1.phone_number.country_code;
-    cout << "Провайдер (0-4): ";
+    cout << "Провайдер: ";
     cin >> op1.phone_number.provider;
     cout << "Номер телефона: ";
     cin >> op1.phone_number.number;
@@ -57,25 +52,26 @@ void getOper(MobileOperator &op1) {
     cin >> op1.call_minutes;
 }
 void putOper(MobileOperator op) {
-    cout << "Телефон: +" << op.phone_number.country_code<< "-" << op.phone_number.provider<< "-" << op.phone_number.number << "\n"<< "Владелец: " << op.owner << "\n"<< "Тариф: " << op.tariff_plan << "\n"<< "Безлимит: " << (op.unlimited_internet ? "Да" : "Нет") << "\n"<< "Минуты: " << op.call_minutes << "\n";
+    cout << "Телефон: +" << op.phone_number.country_code<< "-(" << op.phone_number.provider<< ")-" << op.phone_number.number << "\n"<< "Владелец: " << op.owner << "\n"<< "Тариф: " << op.tariff_plan << "\n"<< "Безлимит: " << (op.unlimited_internet ? "Да" : "Нет") << "\n"<< "Минуты: " << op.call_minutes << "\n";
 }
 int main() {
     setlocale(LC_ALL,"rus");
     MobileOperator op1, op2;
-
+    cout << "Введите данные первого оператора:\n";
     getOper(op1);
+    cout << "Введите данные второго оператора:\n";
     getOper(op2);
 
     int diff;
     cout << "Введите количество минут: ";
     cin >> diff;
 
-    diff = op1 - diff;
     if (diff != -1)
         cout << "Остаток минут у op1: " << diff << "\n";
     else
         cout << "Недостаточно минут у op1!\n";
 
+    diff = op1 - diff;
 
 
     cout << "\nСравнение операторов:\n";
@@ -83,8 +79,9 @@ int main() {
         cout << "Операторы идентичны\n";
     else
         cout << "Операторы разные\n";
-
+    cout << "\nДанные первого оператора:\n";
     putOper(op1);
+    cout << "\nДанные второго оператора:\n";
     putOper(op2);
 
 }

@@ -67,9 +67,9 @@ void main()
 
 #ifdef TEST_DICTIONARY
 		Instance d1 = Create("Преподаватели", 5); 
-		Entry e1 = { 1, "Гладкий" }, 
+		Entry e1 = { 1, "Калиновская" }, 
 			e2 = { 2, "Наркевич" },
-			e3 = { 3, "Смелов" },
+			e3 = { 3, "Харланович" },
 			e4 = { 4, "Шиман" },
 			e5 = { 5, "Белодед" };
 
@@ -86,12 +86,12 @@ void main()
 
 
 		Instance d2 = Create("Студенты", 5);
-		Entry s1 = { 1, "Иванов" }, s2 = { 2, "Петров" }, s3 = { 3, "Сидоров" };
+		Entry s1 = { 1, "Иванов" }, s2 = { 2, "Савицкий" }, s3 = { 3, "Козловский" };
 		addEntry(d2, s1);
 		addEntry(d2, s2);
 		addEntry(d2, s3);
 
-		Entry new_entry2 = { 4, "Николаев" };
+		Entry new_entry2 = { 4, "Журко" };
 		UpdEntry(d2, 3, new_entry2);
 		Print(d2);
 

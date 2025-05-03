@@ -1,4 +1,4 @@
-#include "Dictionaryr.h"
+#include "Dictionary.h"
 #include "stdafx.h"
 #include <iostream>
 #include <cstring>

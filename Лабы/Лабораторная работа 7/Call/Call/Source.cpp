@@ -2,18 +2,18 @@
 #include "Call.h"
 
 int main() {
-    // Тестирование cdecl
+    
     int result_cdecl = Call::cdeсl(1, 2, 3);
-    std::cout << "cdecl: " << result_cdecl << std::endl; // 6
+    std::cout << "cdecl: " << result_cdecl << std::endl; 
 
-    // Тестирование cstd
+    
     int a = 2;
     int result_cstd = Call::cstd(a, 3, 4);
-    std::cout << "cstd: " << result_cstd << std::endl; // 24
+    std::cout << "cstd: " << result_cstd << std::endl; 
 
-    // Тестирование cfst
+    
     int result_cfast = Call::cfst(1, 2, 3, 4);
-    std::cout << "fastcall: " << result_cfast << std::endl; // 10
+    std::cout << "fastcall: " << result_cfast << std::endl; 
 
     return 0;
 }
