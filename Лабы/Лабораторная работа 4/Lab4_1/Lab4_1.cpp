@@ -2,18 +2,26 @@
 #include <cstring>
 using namespace std;
 
+typedef int CountryCode;
+typedef int ProviderCode;
+typedef unsigned long long PhoneNumberValue;
+typedef char OwnerName[100];
+typedef char TariffPlanName[50];
+typedef bool UnlimitedInternet;
+typedef int CallMinutes;
+
 struct MobileOperator {
     struct PhoneNumber {
-        int country_code;
-        int provider;
-        unsigned long long number;
+        CountryCode country_code;
+        ProviderCode provider;
+        PhoneNumberValue number;
     };
 
     PhoneNumber phone_number;
-    char owner[100];
-    char tariff_plan[50];
-    bool unlimited_internet;
-    int call_minutes;
+    OwnerName owner;
+    TariffPlanName tariff_plan;
+    UnlimitedInternet unlimited_internet;
+    CallMinutes call_minutes;
 };
 
 int operator-(MobileOperator& a, int minutes) {
@@ -33,8 +41,8 @@ bool operator==(MobileOperator a, MobileOperator b) {
         a.unlimited_internet == b.unlimited_internet &&
         a.call_minutes == b.call_minutes);
 }
-void getOper(MobileOperator &op1) {
-    
+void getOper(MobileOperator& op1) {
+
     cout << "Код страны: ";
     cin >> op1.phone_number.country_code;
     cout << "Провайдер: ";
@@ -52,10 +60,10 @@ void getOper(MobileOperator &op1) {
     cin >> op1.call_minutes;
 }
 void putOper(MobileOperator op) {
-    cout << "Телефон: +" << op.phone_number.country_code<< "-(" << op.phone_number.provider<< ")-" << op.phone_number.number << "\n"<< "Владелец: " << op.owner << "\n"<< "Тариф: " << op.tariff_plan << "\n"<< "Безлимит: " << (op.unlimited_internet ? "Да" : "Нет") << "\n"<< "Минуты: " << op.call_minutes << "\n";
+    cout << "Телефон: +" << op.phone_number.country_code << "-(" << op.phone_number.provider << ")-" << op.phone_number.number << "\n" << "Владелец: " << op.owner << "\n" << "Тариф: " << op.tariff_plan << "\n" << "Безлимит: " << (op.unlimited_internet ? "Да" : "Нет") << "\n" << "Минуты: " << op.call_minutes << "\n";
 }
 int main() {
-    setlocale(LC_ALL,"rus");
+    setlocale(LC_ALL, "rus");
     MobileOperator op1, op2;
     cout << "Введите данные первого оператора:\n";
     getOper(op1);
@@ -66,12 +74,6 @@ int main() {
     cout << "Введите количество минут: ";
     cin >> diff;
 
-    if (diff != -1)
-        cout << "Остаток минут у op1: " << diff << "\n";
-    else
-        cout << "Недостаточно минут у op1!\n";
-
-    diff = op1 - diff;
 
 
     cout << "\nСравнение операторов:\n";
@@ -79,6 +81,15 @@ int main() {
         cout << "Операторы идентичны\n";
     else
         cout << "Операторы разные\n";
+
+
+    diff = op1 - diff;
+    if (diff != -1)
+        cout << "Остаток минут у op1: " << diff << "\n";
+    else
+        cout << "Недостаточно минут у op1!\n";
+
+
     cout << "\nДанные первого оператора:\n";
     putOper(op1);
     cout << "\nДанные второго оператора:\n";

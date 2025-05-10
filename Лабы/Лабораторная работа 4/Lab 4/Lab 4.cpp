@@ -18,7 +18,7 @@ bool operator==(Date date1, Date date2) {
 	return date1.yyyy == date2.yyyy && date1.mm == date2.mm && date1.dd == date2.dd;
 }
 bool operator>(Date date1, Date date2) {
-	return !(date1 < date2 || date1 == date2);
+	return date2 < date1;
 }
 
 int main() {

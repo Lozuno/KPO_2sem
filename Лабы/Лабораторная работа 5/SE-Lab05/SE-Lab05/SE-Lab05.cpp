@@ -96,7 +96,7 @@ void main()
 		Print(d2);
 
 		cout << endl;
-		Entry ex2 = GetEntry(d1, 4);  
+		Entry ex2 = GetEntry(d1, 4);
 		Delete(d1);
 		Delete(d2);
 #endif

@@ -7,15 +7,16 @@ using namespace std;
 
 Instance Dictionary::Create(const char* name, int maxsize)
 {
-	Instance NewDict;
+	
 	if (strlen(name) > ENTRYNAMEMAXSIZE)
 	{
 		throw THROW01; 
 	}
-	if (NewDict.maxsize < maxsize)
+	if (DICTMAXSIZE < maxsize)
 	{
 		throw THROW02; 
 	}
+	Instance NewDict;
 	strcpy_s(NewDict.name, name);
 	NewDict.maxsize = maxsize; 
 	NewDict.dictionary = new Entry[maxsize];
@@ -28,14 +29,11 @@ void Dictionary::addEntry(Instance& inst, Entry ed)
 	{
 		throw THROW03;   
 	}
-	else
-	{
-		inst.dictionary[size] = ed;
-	}
 	for (int i = 0; i < size; i++)
 	{
 		if (inst.dictionary[i].id == ed.id) throw THROW04;
 	}
+	inst.dictionary[size] = ed;
 	inst.size++;
 }
 void Dictionary::DelEntry(Instance& inst, int id)
@@ -63,7 +61,7 @@ Entry Dictionary::GetEntry(Instance& inst, int id)
 	{
 		if (inst.dictionary[i].id == id)
 		{
-			cout << inst.dictionary[i].name << endl;
+			
 			return inst.dictionary[i];
 		}
 	}
@@ -100,7 +98,7 @@ void Dictionary::Print(Instance& d)
 	for (int i = 0; i < d.size; i++)
 	{
 		cout << "ID = " << d.dictionary[i].id
-			<< "\n " << d.dictionary[i].name << endl << endl;
+			<<' ' << d.dictionary[i].name << endl;
 	}
 }
 void Dictionary::Delete(Instance& inst)
