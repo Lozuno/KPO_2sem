@@ -20,9 +20,13 @@ int Varparm::svarparm(short n, ...) {
 	return max;
 }
 double Varparm::fvarparm(float a, ...) {
-	float* cur = &a;
-	double sum=0;
-	while (*cur != FLT_MAX) {
+	double sum = 0;
+	if (a == FLT_MAX) {
+		return sum;
+	}
+	sum += a;
+	double* cur = (double*)(&a+1);
+	while (*cur !=FLT_MAX) {
 		sum += *cur;
 		cur++;
 	}
