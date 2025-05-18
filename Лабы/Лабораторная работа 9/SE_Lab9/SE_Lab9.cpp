@@ -5,18 +5,18 @@ using namespace Varparm;
 
 int main() {
 	ivaparm(0);
-	ivaparm(1,6);
-	ivaparm(2, 5, 12);
-	ivaparm(6, 12, 8, 23, 7, -5, 0);
+	ivaparm(1,1);
+	ivaparm(2, 1, 2);
+	ivaparm(6, 1, 2, 3, 4, 5, 6);
 
 	short n = 0;
 	svarparm(n);
 	n = 1;
-	svarparm(n, 8);
+	svarparm(n, 1);
 	n = 2;
-	svarparm(n, 34, 5);
+	svarparm(n, 1, 2);
 	n = 6;
-	svarparm(n, 33, 2, 8, 56, 12, -55);
+	svarparm(n, 1, 2, 3, 4, 5, 6);
 
 	fvarparm(FLT_MAX);
 	fvarparm(2.0f, FLT_MAX);
