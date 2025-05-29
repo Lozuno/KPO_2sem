@@ -10,6 +10,7 @@ int main()
     // определить количество целых чисел в std::vector равных заданному.
     int target1 = 3;
     int num_items1 = std::count(v.begin(), v.end(), target1);
+  
 
     std::cout << "число: " << target1 << " количество: " << num_items1 << '\n';
 
