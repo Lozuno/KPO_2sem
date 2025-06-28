@@ -1,6 +1,6 @@
 #pragma once
 #define ERROR_THROW(id) Error::geterror(id);							// throw ERROR THROW(id)
-#define ERROR_THROW_IN(id,l,c) Error::geterrorin (id,l,c);				// throw ERROR_THROW(id, строка, колонка) 
+#define ERROR_THROW_IN(id,l,c) Error::getterrorin(id,l,c);				// throw ERROR_THROW(id, строка, колонка) 
 #define ERROR_ENTRY(id, m) {id, m, {-1, -1}}							// элемент таблицы ошибок 
 #define ERROR_MAXSIZE_MESSAGE 200										//максимальная длина сообщения об ошибке
 #define ERROR_ENTRY_NODEF(id) ERROR_ENTRY(-id, "Неопределенная ошибка")		// 1 неопределенный элемент таблицы ошибок 
@@ -26,5 +26,5 @@ namespace Error
 	};
 
 	ERROR geterror(int id);// сформировать ERROR для ERROR_THROW
-	ERROR geterrorin(int id, int line, int col); // cформировать ERROR для_ERROR THROW_IN
+	ERROR getterrorin(int id, int line, int col); // cформировать ERROR для_ERROR THROW_IN
 };

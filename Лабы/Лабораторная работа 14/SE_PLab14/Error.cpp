@@ -5,7 +5,7 @@ namespace Error
 	// серии ошибок:	0 - 99 - системные ошибки
 	//					100 - 109 - ошибки парметров
 	//					110 - 119 - ошибки открытия и чтения файлов
-	ERROR errors[ERROR_MAX_ENTRY] = //таблича ошибoк
+	ERROR errors[ERROR_MAX_ENTRY] = //таблица ошибoк
 	{
 	ERROR_ENTRY(0, "Недопустимый код ошибки"), // код ошибки вне диапазона 0 - ERROR_MAX_ENTRY
 	ERROR_ENTRY(1, "Системный сбой"),
@@ -19,7 +19,7 @@ namespace Error
 	ERROR_ENTRY_NODEF(105), ERROR_ENTRY_NODEF(106), ERROR_ENTRY_NODEF(107),
 	ERROR_ENTRY_NODEF(108), ERROR_ENTRY_NODEF(109),
 	ERROR_ENTRY(110, "Ошибка при открытии файла с исходным кодом (-in)"),
-	ERROR_ENTRY(111, "Недопустимый символ в исходном файле (-іп)"),
+	ERROR_ENTRY(111, "Недопустимый символ в исходном файле (-іn)"),
 	ERROR_ENTRY(112, "Ошибка при создании файла протокола (-log)"),
 	ERROR_ENTRY_NODEF(113), ERROR_ENTRY_NODEF(114), ERROR_ENTRY_NODEF(115),
 	ERROR_ENTRY_NODEF(116), ERROR_ENTRY_NODEF(117), ERROR_ENTRY_NODEF(118), ERROR_ENTRY_NODEF(119),
@@ -29,9 +29,19 @@ namespace Error
 	ERROR_ENTRY_NODEF100(600), ERROR_ENTRY_NODEF100(700), ERROR_ENTRY_NODEF100(800), ERROR_ENTRY_NODEF100(900)
 	};
 	ERROR geterror(int id){
-	//пупупу
+		if (id <= 0 || id >= ERROR_MAX_ENTRY) {
+			return errors[0];
+		}
+		return errors[id];
 	}
 	ERROR getterrorin(int id, int line = -1, int col = -1) {
-	//пупупу
+		ERROR newError;
+		if (id <= 0 || id >= ERROR_MAX_ENTRY) 
+			newError= errors[0];
+		else
+			newError=errors[id];
+		newError.inext.line = line;
+		newError.inext.col = col;
+		return newError;
 	}
 };
