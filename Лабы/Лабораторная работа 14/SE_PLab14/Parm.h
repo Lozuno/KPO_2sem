@@ -1,4 +1,5 @@
 #pragma once
+#include <tchar.h>
 #define PARM_IN L"-in:"		// ключ для файла исходного кода
 #define PARM_OUT L"-out:"	// ключ для файла объектного кода
 #define PARM_LOG L"-log:"	// ключ для файла журнала

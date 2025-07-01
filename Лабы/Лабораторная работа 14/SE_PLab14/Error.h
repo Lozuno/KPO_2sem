@@ -1,5 +1,5 @@
 #pragma once
-#define ERROR_THROW(id) Error::geterror(id);							// throw ERROR THROW(id)
+#define ERROR_THROW(id) Error::geterror(id);							// throw ERROR_THROW(id)
 #define ERROR_THROW_IN(id,l,c) Error::getterrorin(id,l,c);				// throw ERROR_THROW(id, строка, колонка) 
 #define ERROR_ENTRY(id, m) {id, m, {-1, -1}}							// элемент таблицы ошибок 
 #define ERROR_MAXSIZE_MESSAGE 200										//максимальная длина сообщения об ошибке

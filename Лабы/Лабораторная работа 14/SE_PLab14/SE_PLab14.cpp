@@ -24,7 +24,7 @@ int _tmain(int argc, TCHAR* argv[]) {
 			<< ", строка " << e.inext.line
 			<< ", позиция" << e.inext.col << std::endl << std::endl;
 	};
-	/*
+	
 	std::cout << "---- TеCT Parm::getparm ---" << std::endl << std::endl;
 	try {
 		Parm::PARM parm = Parm::getparm(argc, argv);
@@ -35,7 +35,7 @@ int _tmain(int argc, TCHAR* argv[]) {
 		std::cout << "Ownбка " << e.id << ": " << e.message << std::endl << std::endl;
 	};
 
-
+	/*
 	std::cout << "---- TECT In::getin ---"<<std::endl<<std::endl;
 	try {
 		Parm::PARM parm = Parm::getparm(argc, argv);
