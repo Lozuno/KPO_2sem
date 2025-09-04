@@ -6,8 +6,6 @@
 namespace Log				// Работа с протоколом
 {
 	struct LOG {			// протокол
-
-
 		wchar_t logfile[PARM_MAX_SIZE];		// имя файла протокола 
 		std::ofstream* stream;				// выходной поток протокола
 	};
@@ -16,8 +14,8 @@ namespace Log				// Работа с протоколом
 	void WriteLine(LOG log, char* с, ...);			// вывести в протокол конкатенацию строк 
 	void WriteLine(LOG log, wchar_t* c, ...);		// вывести в протокол конкатенацию строк 
 	void WriteLog(LOG log);							// вывести в протокол заголовок
-	void writeParm(LOG log, Parm::PARM parm);		// вывести в протокол информацию о входных параметрах 
-	void writeIn(LOG log, In::IN in);				// вывести в протокол информацию о входном потоке
+	void WriteParm(LOG log, Parm::PARM parm);		// вывести в протокол информацию о входных параметрах 
+	void WriteIn(LOG log, In::IN in);				// вывести в протокол информацию о входном потоке
 	void WriteError(LOG log, Error::ERROR error);	// вывести в протокол информацию об ошибке
 	void Close(LOG log);
 };

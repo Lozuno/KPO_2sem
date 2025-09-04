@@ -35,7 +35,7 @@ namespace In
         int lines; // количество строк
         int ignor; // количество проигнорированных символов
         unsigned char* text; // исходный код (Windows - 1251)
-        int code[256]; // таблица проверки: T, F, I новое значение
+        int code[256]=IN_CODE_TABLE; // таблица проверки: T, F, I новое значение
     };
     IN getin(wchar_t infile[]); // вводим проверять входной поток
 };

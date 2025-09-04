@@ -7,65 +7,83 @@
 #include "Parm.h"// обработка параметров 
 #include "Log.h" // работа с протоколом
 #include "In.h"// ввод исходного файла
+using namespace std;
 int _tmain(int argc, TCHAR* argv[]) {
 
-	setlocale(LC_ALL, "rus"); std::cout << "---- тест Error::geterror ---" << std::endl << std::endl;
+	setlocale(LC_ALL, "rus");
+	cout << "---- Тест Error::geterror ---" << endl << endl;
 	try { throw ERROR_THROW(100); }
 	catch (Error::ERROR e)
 	{
-		std::cout << "Oшибка " << e.id << ":" << e.message << std::endl << std::endl;
+		cout << "Oшибка " << e.id << ":" << e.message << endl << endl;
 	};
 
-	std::cout << "---- тест Error::geterrorin ---" << std::endl << std::endl;
+	cout << "---- Тест Error::geterrorin ---" << endl << endl;
 	try { throw ERROR_THROW_IN(111, 7, 7); }
 	catch (Error::ERROR e)
 	{
-		std::cout << "Owибка " << e.id << ": " << e.message
-			<< ", строка " << e.inext.line
-			<< ", позиция" << e.inext.col << std::endl << std::endl;
+		cout << "Oшибка " << e.id << ": " << e.message << ", строка " << e.inext.line << ", позиция" << e.inext.col << endl << endl;
 	};
 	
-	std::cout << "---- TеCT Parm::getparm ---" << std::endl << std::endl;
+	cout << "---- Tест Parm::getparm ---" << endl << endl;
 	try {
 		Parm::PARM parm = Parm::getparm(argc, argv);
-		std::wcout << "-in: " << parm.in << ", -out:" << parm.out << ", -log: " << parm.log << std::endl << std::endl;
+		wcout << "-in: " << parm.in << ", -out:" << parm.out << ", -log: " << parm.log << endl << endl;
 	}
 	catch (Error::ERROR e)
 	{
-		std::cout << "Ownбка " << e.id << ": " << e.message << std::endl << std::endl;
+		cout << "Oшибка " << e.id << ": " << e.message << endl << endl;
 	};
 
-	/*
-	std::cout << "---- TECT In::getin ---"<<std::endl<<std::endl;
+	
+	cout << "---- Tест In::getin ---"<<endl<<endl;
 	try {
 		Parm::PARM parm = Parm::getparm(argc, argv);
 		In::IN in=In::getin(parm.in);
-		std::cout << in.text << std::endl;
-		std::cout << "Bсего символов: " << in.size << std::endl;
-		std::cout << "Bсeгo строк: " << in.lines << std::endl;
-		std::cout << "Пропушено: " << in.ignor << std::endl;
+		cout << in.text << endl;
+		cout << "Bсего символов: " << in.size << endl;
+		cout << "Bсeгo строк: " << in.lines << endl;
+		cout << "Пропушено: " << in.ignor << endl;
 	}
 	catch (Error::ERROR e)
 	{
-		std::cout << "Owибка " << e.id << ":" << e.message << std::endl << std::endl;
+		cout << "Oшибка " << e.id << ":" << e.message << endl << endl;
+		cout << "cтрока " << e.inext.line << " позиция " << e.inext.col << endl << endl;
 	};
 
-	std::cout << "---- Tecт In::getin ---"<< std::endl << std::endl;
-		try
+	cout << "---- Tecт In::getin ---"<< endl << endl;
+	try
 	{
 		Parm::PARM parm=Parm::getparm(argc, argv);
 		In::IN in=In::getin(parm.in);
-		std::cout << in.text << std::endl;
-		std::cout << "Bceго символов: " << in.size << std::endl;
-		std::cout << "Bceгo cтрOK: " << in.lines << std::endl;
-		std::cout << "Пpопушено: " << in.ignor << std::endl;
+		cout << in.text << endl;
+		cout << "Bceго символов: " << in.size << endl;
+		cout << "Bceгo cтрок: " << in.lines << endl;
+		cout << "Пpопущено: " << in.ignor << endl;
 	}
 	catch (Error::ERROR e)
 	{
-		std::cout << "Owибка " << e.id << ": " << e.message << std::endl;
-		std::cout << "cтрока " << e.inext.line << " позичия " << e.inext.col << std::endl << std::endl;
+		cout << "Ошибка " << e.id << ": " << e.message << endl;
+		cout << "cтрока " << e.inext.line << " позиция " << e.inext.col << endl << endl;
 	};
-	*/
+	cout << "---- Tecт Log ---" << endl << endl;
+	Log::LOG log = Log::INITLOG;
+	try
+	{
+		Parm::PARM parm = Parm::getparm(argc, argv);
+		log = Log::getlog(parm.log);
+		Log::WriteLine(log, (char*)"Тест", (char*)" без ошибок \n", "");
+		Log::WriteLine(log, (wchar_t*)L"Тест", (wchar_t*)L" без ошибок \n", L"");
+		Log::WriteLog(log);
+		Log::WriteParm(log, parm);
+		In::IN in = In::getin(parm.in);
+		Log::WriteIn(log, in);
+		Log::Close(log);
+	}
+	catch (Error::ERROR e)
+	{
+		Log::WriteError(log, e);
+	};
 	system("pause");
 	return 0;
 };
